@@ -8,19 +8,29 @@
 <body>
     <div class="panels">
         <div class="panel panel1">
-
+            <p>LIVE</p>
+            <p>HERE</p>
+            <p>ONCE</p>
         </div>
         <div class="panel panel2">
-
+            <p>GIVES</p>
+            <p>YOU</p>
+            <p>HAPPINESS</p>
         </div>
         <div class="panel panel3">
-
+            <p>PEOPLE</p>
+            <p>ARE</p>
+            <p>WELCOME</p>
         </div>
         <div class="panel panel4">
-
+            <p>BE</p>
+            <p>IN</p>
+            <p>MOOD</p>
         </div>
         <div class="panel panel5">
-
+            <p>LOVE</p>
+            <p>ISTANBUL</p>
+            <p>FOREVER</p>
         </div>
     </div>
     
@@ -31,12 +41,18 @@
     body{
         display: flex;
         min-height: 100vh;
+        font-size: xx-large;
+        color: white;
     }
     .panels{
         display:flex;
         flex:1;
     }
+   
     .panel{
+        justify-content: center;
+        overflow: hidden;
+        flex-direction: column;
         display:flex;
         flex:1;
         border: 1px solid white;
@@ -47,6 +63,21 @@
     .active{
         flex:5;
     }
+    
+    .panel > * {
+        text-align: center;
+        justify-content: center;
+        flex: 1 0 auto;
+        display: flex;
+        transition: transform 0.5s;
+        align-items: center;
+    }
+    .panel > *:first-child { transform: translateY(-100%); }
+    .panel > *:last-child { transform: translateY(100%); }
+    .movecenter{
+        transform: translateY(0) !important;
+    }
+
     .panel1{background-image: url(images/1.jpg);}
     .panel2{background-image: url(images/2.jpg);}
     .panel3{background-image: url(images/3.jpg);}
@@ -59,10 +90,12 @@
     panels.forEach(item => item.addEventListener('click',activate));
     
     function activate(){
-        panels.forEach(item =>item.classList.remove('active'));
+        panels.forEach(item => item.classList.remove('active'));
         this.classList.toggle('active');
-
+        const ps=this.querySelectorAll("p");
+        ps.forEach(p => p.classList.toggle('movecenter'));
     }
+
 </script>
 
 </html>
