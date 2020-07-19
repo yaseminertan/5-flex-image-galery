@@ -62,6 +62,7 @@
     }
     .active{
         flex:5;
+        font-style: italic;
     }
     
     .panel > * {
@@ -90,7 +91,11 @@
     panels.forEach(item => item.addEventListener('click',activate));
     
     function activate(){
-        panels.forEach(item => item.classList.remove('active'));
+        panels.forEach(item => {
+            item.classList.remove('active');
+            const paraps=item.querySelectorAll("p");
+            paraps.forEach(parap => parap.classList.remove('movecenter'));
+        });
         this.classList.toggle('active');
         const ps=this.querySelectorAll("p");
         ps.forEach(p => p.classList.toggle('movecenter'));
